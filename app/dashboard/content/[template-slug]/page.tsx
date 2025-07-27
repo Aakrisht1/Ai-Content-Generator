@@ -17,15 +17,15 @@ import { useRouter } from "next/navigation";
 import { TotalUsageContext } from "@/app/(context)/TotalUsageContext";
 import UpdateCreditUsageContext from "@/app/(context)/UpdateCreditUsageContext";
 
-interface PROPS {
+interface PageProps {
   params: {
     "template-slug": string;
   };
 }
 
-const CreateNewContent = (props: PROPS) => {
+const CreateNewContent = ({ params }: PageProps) => {
   const selectedTemplate: TEMPLATE | undefined = Templates?.find(
-    (item) => item.slug == props.params["template-slug"]
+    (item) => item.slug == params["template-slug"]
   );
 
   const [loading, setLoading] = useState(false);

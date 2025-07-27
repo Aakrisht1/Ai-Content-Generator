@@ -1,13 +1,14 @@
 import CreateNewContent from './CreateNewContent';
 
 interface PageProps {
-  params: {
+  params: Promise<{
     'template-slug': string;
-  };
+  }>;
 }
 
-const Page = ({ params }: PageProps) => {
-  return <CreateNewContent templateSlug={params['template-slug']} />;
+const Page = async ({ params }: PageProps) => {
+  const resolvedParams = await params;
+  return <CreateNewContent templateSlug={resolvedParams['template-slug']} />;
 };
 
 export default Page;
